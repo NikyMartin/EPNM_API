@@ -5,8 +5,9 @@ cases from inventory retrieval to service provisioning
 (since not all information are exposed via API, some scripts will directly connect to the 
 Cisco EPN Manager Oracle database to fill the gap).
 
-If you are new to Cisco EPN Manager, following we have an extract from the Cisco EPN Manager API Examples datasheet
+If you are new to Cisco EPN Manager, following is an extract from the Cisco EPN Manager datasheet
 
+# What Cisco EPN Manager is
 
 ### Product overview
 
