@@ -1,4 +1,12 @@
-# EPN Manager API Examples
+# Cisco EPN Manager API Examples
+
+This project contains examples on how to use Cisco EPN Manager API covering multiple uses 
+cases from inventory retrieval to service provisioning
+(since not all information are exposed via API, some scripts will directly connect to the 
+Cisco EPN Manager Oracle database to fill the gap).
+
+If you are new to Cisco EPN Manager, following we have an extract from the Cisco EPN Manager API Examples datasheet
+
 
 ### Product overview
 
