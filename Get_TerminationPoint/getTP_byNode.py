@@ -93,7 +93,8 @@ def get_all_tp(urlpassed,user,pwd):
             url = urlpassed+'&.startIndex='+str(page)
         else:
             url = urlpassed
-        print(url)
+#        print('Used URL:')
+#        print(url)
         status, resp = sendGET(url, user, pwd)
         if not status:
             print("ERROR: It was not possible to run execute PUT template")
@@ -117,30 +118,32 @@ def get_all_tp(urlpassed,user,pwd):
 #   Main
 ############
 
-if len(sys.argv)!=2:
-   print('\nMust pass EPN-M IP address as script argument\n')
-   exit()
-scripts, server_ip, = sys.argv
+if __name__ == '__main__':
 
-if not isOpen(server_ip, 443):
-    print("\nERROR: " + server_ip + " is not reachable, either the server is down or port 443 is filtered\n")
-    exit()
+    if len(sys.argv)!=2:
+       print('\nMust pass EPN-M IP address as script argument\n')
+       exit()
+    scripts, server_ip, = sys.argv
 
-if not isEPNM(server_ip):
-    print("\nERROR: " + server_ip + " is not an EPN-M Server\n")
-    exit()
+    if not isOpen(server_ip, 443):
+        print("\nERROR: " + server_ip + " is not reachable, either the server is down or port 443 is filtered\n")
+        exit()
 
-username = input("\nEnter Device Username: ")
-password = getpass.getpass()
-nodeName = input("\nEnter Node Name: ")
+    if not isEPNM(server_ip):
+        print("\nERROR: " + server_ip + " is not an EPN-M Server\n")
+        exit()
 
-if not isAccountValid(server_ip, username, password):
-    print("\nERROR: Check if username and password are correct\n")
-    exit()
+    username = input("\nEnter Username: ")
+    password = getpass.getpass()
+    nodeName = input("\nEnter Node Name: ")
 
-if not isNodeValid(server_ip, username, password, nodeName):
-    print('\nERROR: ' + nodeName, 'is not found in EPN-M inventory\n')
-    exit()
+    if not isAccountValid(server_ip, username, password):
+        print("\nERROR: Check if username and password are correct\n")
+        exit()
 
-url = 'https://'+server_ip+'/restconf/data/v1/cisco-resource-ems:termination-point?ndFdn=MD=CISCO_EPNM!ND='+nodeName
-get_all_tp(url, username, password)
+    if not isNodeValid(server_ip, username, password, nodeName):
+        print('\nERROR: ' + nodeName, 'is not found in EPN-M inventory\n')
+        exit()
+
+    url = 'https://'+server_ip+'/restconf/data/v1/cisco-resource-ems:termination-point?ndFdn=MD=CISCO_EPNM!ND='+nodeName
+    get_all_tp(url, username, password)
