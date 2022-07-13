@@ -1,7 +1,7 @@
 
-Those two examples can be used to retrieve termination points
+Those two examples can be used to retrieve termination points FDNs
 
-**getTP.py** returns all termination points from __all__ devices and prints to terminal output
+**getTP.py** returns all termination points FDNs from __all__ devices and prints to terminal output
 
 **getTP_byNode.py** returns all termination points FDNs for a given device and prints to terminal output
 
