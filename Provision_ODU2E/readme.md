@@ -7,6 +7,8 @@ More details are available in the included Powerpoint deck: Provision_ODU2E.pptx
 ### Setup:
 
 - Import the ExportedTemplates.zip template file in EPNM
+    In EPNM main navigation menu:
+    Configuration -> Features & Technologies. Then "Import" button
 
 - Update dbapassword file with the output from EPNM script:
 	/opt/CSCOlumos/bin/getDatabaseParams.sh
