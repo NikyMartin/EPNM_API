@@ -1,0 +1,51 @@
+{
+    "service_instance": {
+        "service_details": {
+            "service_name": "2K-2K_prot",
+            "protection": "protected",
+            "service_id": 94
+        },
+        "service_termination_points": {
+            "A_endpoint": {
+                "node_type": "2K",
+                "node_name": "MESH-2-128",
+                "w_trunk_port": "1-4-12",
+                "p_trunk_port": "1-4-11",
+                "w_tpn": "12",
+                "p_tpn": "12",
+                "client_port": "1-4-3-2"
+            },
+            "Z_endpoint": {
+                "node_type": "2K",
+                "node_name": "MESH-1-131",
+                "w_trunk_port": "1-6-11",
+                "p_trunk_port": "1-6-12",
+                "w_tpn": "12",
+                "p_tpn": "12",
+                "client_port": "1-6-3-2"
+            },
+            "midpoints_protected": [
+                {
+                    "node_type": "4K",
+                    "node_name": "4016_231",
+                    "w_trunk_port": "0/9/0/10",
+                    "p_trunk_port": "0/10/0/10",
+                    "w_tpn": "4",
+                    "p_tpn": "4",
+                    "xconnect_id": "4"
+                },
+                {
+                    "node_type": "4K",
+                    "node_name": "4016_228",
+                    "w_trunk_port": "0/9/0/10",
+                    "p_trunk_port": "0/10/0/10",
+                    "w_tpn": "4",
+                    "p_tpn": "4",
+                    "xconnect_id": "4"
+                }
+            ],
+            "midpoints_working": [
+            ]
+        }
+    }
+}

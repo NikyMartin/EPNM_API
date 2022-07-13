@@ -1,0 +1,38 @@
+{
+    "service_instance": {
+        "service_details": {
+            "service_name": "4K-2K_unprot_bis",
+            "protection": "unprotected",
+            "service_id": 88
+        },
+        "service_termination_points": {
+            "A_endpoint": {
+                "node_type": "4K",
+                "node_name": "4016_228",
+                "w_trunk_port": "0/10/0/10",
+                "client_port": "0/9/0/5/1",
+                "w_tpn": "1",
+                "odu_group": "0",
+                "xconnect_id": "1"
+            },
+            "Z_endpoint": {
+                "node_type": "2K",
+                "node_name": "MESH-2-128",
+                "w_trunk_port": "1-4-12",
+                "w_tpn": "11",
+                "client_port": "1-4-3-1"
+            },
+            "midpoints_working": [
+                {
+                    "node_type": "2K",
+                    "node_name": "MESH-1-131",
+                    "w_trunk_port": "1-6-12",
+                    "p_trunk_port": "1-6-11",
+                    "w_tpn": "11",
+                    "p_tpn": "11"
+                }
+            ],
+            "midpoints_protected": []
+        }
+    }
+}
