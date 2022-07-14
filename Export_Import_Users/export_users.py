@@ -46,12 +46,6 @@ if version[0] != '3':
 
 logger.info("Python version is "+platform.python_version())
 
-# Static username and password
-# Remember to comment getusername and password down in the script
-
-# epnm_username = 'martino'
-# epnm_password = 'Public123'
-
 ### Check if IP address and port have been passed as input parameters
 if len(sys.argv)!=3:
     print('\nMust pass server IP address and Oracle wcsdba password as script arguments')
@@ -59,9 +53,6 @@ if len(sys.argv)!=3:
     exit(1)
 scripts, server_ip, dbapassword = sys.argv
 
-###### Uncomment next two linesto use static server IP and dba password
-# server_ip="10.58.250.27"
-# dbapassword='NzyiE5sRosS5R7lj'
 export_oracle_filename='export_oracle_users.json'
 export_epnm_filename='export_epnm_users.json'
 
