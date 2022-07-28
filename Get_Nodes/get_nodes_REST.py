@@ -1,6 +1,14 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 
 """
+
+    This script uses REST to extract following node details from EPNM
+          - Device ID
+          - Device IP Address
+          - Device Name
+          - Device Type
+          - Device Collection Status
+
     March 8th, 2020
     Created by:
     Nicola Martino, nmartino@cisco.com
@@ -18,15 +26,6 @@
         added a progress counter
 
 """
-
-# Next steps:
-#	- generate a list rather than print 1 line a time
-#	- add a device conuter progress indicator
-
-# Static username and password 
-# Remember to comment getusername and password down in the script
-# username = 'root'
-# password = 'Public123'
 
 import os
 import socket
