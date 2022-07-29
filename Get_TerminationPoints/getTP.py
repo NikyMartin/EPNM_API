@@ -75,7 +75,7 @@ def get_all_tp(urlpassed,user,pwd):
 
         status, resp = sendGET(url, user, pwd)
         if not status:
-            print("ERROR: It was not possible to run execute PUT template")
+            print("ERROR: It was not possible to run execute GET operatiom")
             print("Server returned Error", resp)
             exit(1)
         else:
