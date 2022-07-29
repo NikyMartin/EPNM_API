@@ -1,6 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 """
+
+    This script uses RESTCONF API to retrieve all TP from a given node
+
     Created by:
     Nicola Martino, nmartino@cisco.com
 
@@ -70,12 +73,10 @@ def get_all_tp(urlpassed,user,pwd):
             url = urlpassed+'?.startIndex='+str(page)
         else:
             url = urlpassed
-#        print('Used URL:')
-#        print(url)
 
         status, resp = sendGET(url, user, pwd)
         if not status:
-            print("ERROR: It was not possible to run execute GET operatiom")
+            print("ERROR: It was not possible to run execute GET operation")
             print("Server returned Error", resp)
             exit(1)
         else:
