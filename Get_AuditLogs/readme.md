@@ -2,7 +2,7 @@ This example can be used to retrieve Audit Log messages from EPN-M
 
 It provides applications and category filters
 
-It can be used as query option as opposed to the EPN-M syslog function where same audit messages are available, without any filter
+It can be used as query option, as opposed to the EPN-M syslog function where same audit messages are available, without any filter
 
 Available Application Options:
 
