@@ -2,7 +2,7 @@ This example can be used to retrieve Audit Log messages from EPN-M
 
 It provides applications and category filters
 
-It can be used as query option as opposed to the available syslog function where same audit messages are available, withoit any filter
+It can be used as query option as opposed to the EPN-M syslog function where same audit messages are available, without any filter
 
 Available Application Options:
 
@@ -33,7 +33,7 @@ Available Category Options:
    - Report				 
    - RESTCONF
 
-**NOTE: Available categories will depend on the selected application. 
+**NOTE**: Available categories will depend on the selected application. 
 During script execution, category list selection menu will also show applicable application
 
 Syntax to be used:
