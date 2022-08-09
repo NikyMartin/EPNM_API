@@ -37,15 +37,8 @@ import json
 import signal
 from tabulate import tabulate
 
-
 signal.signal(signal.SIGINT, lambda x, y: sys.exit(0))
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-### Check if I EPN-M IP address and device name been passed as input parameters
-if len(sys.argv)!=2:
-   print('\nMust pass EPN-M IP address as script argument\n')
-   exit()
-scripts, server_ip = sys.argv
 
 def isOpen(server_ip,port):
    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -83,6 +76,13 @@ def extract_node_data(payload):
 ############
 
 if __name__ == '__main__':
+
+### Check if I EPN-M IP address has been passed as input parameters
+
+    if len(sys.argv)!=2:
+       print('\nMust pass EPN-M IP address as script argument\n')
+       exit()
+    scripts, server_ip = sys.argv
 
 ### Basic controls
 

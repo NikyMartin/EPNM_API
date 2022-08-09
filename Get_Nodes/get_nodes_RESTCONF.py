@@ -99,7 +99,7 @@ if __name__ == '__main__':
         print("\nERROR: Check if username and password are correct\n")
         exit()
 
-# execution
+### execution
 
     os.system('clear')
     print("\nPlease wait. It can take a while.\n")
