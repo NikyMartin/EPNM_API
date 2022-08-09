@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 
 """
     March 5th, 2021
@@ -6,7 +6,7 @@
     Nicola Martino, nmartino@cisco.com
 
     Aug 9th, 2022
-    Rev4: Minor changes
+    Rev1: Minor changes
 
 """
 
