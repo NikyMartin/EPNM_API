@@ -23,6 +23,8 @@
     Rev4: Converted output in a list before printing
           introduced tabulate to create a tabular output
 
+    Sept 23rd, introduced sorted for table output
+
 """
 
 import os
@@ -127,7 +129,7 @@ if __name__ == '__main__':
                   node_name = index1["nd.name"]
               else:
                   node_name = ''
-              node_list.append([index1["nd.management-address"], index1["nd.name"], index1["nd.product-type"],
+              node_list.append([index1["nd.name"], index1["nd.management-address"], index1["nd.product-type"],
                                 index1["nd.lifecycle-state"]])
 
           print("\nLast Index: "+str(last_index))
@@ -137,6 +139,5 @@ if __name__ == '__main__':
           else:
              print("Process Complete\n")
 
-          print(tabulate(node_list, headers=(['Device IP Address', 'Device Name', 'Device Type', 'Collection Status',
+          print(tabulate(sorted(node_list), headers=(['Device Name', 'Device IP Address', 'Device Type', 'Collection Status',
                                               'Lifecycle State'])))
-
