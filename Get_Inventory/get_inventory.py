@@ -10,15 +10,12 @@
 
 """
 
-username = 'nmartino'
-password = 'Public!23'
-
 import requests
-import re
 import sys
-# import xml.etree.ElementTree as ET
+import getpass
 import json
 from tabulate import tabulate
+
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -88,8 +85,8 @@ if __name__ == '__main__':
        exit()
     scripts, server_ip, device_name = sys.argv
 
-# username = input("Enter Device Username: ")
-# password = getpass.getpass()
+    username = input("Enter Device Username: ")
+    password = getpass.getpass()
 
     if isNodeValid(server_ip, username, password, device_name):
         node = json.loads(getNode(server_ip, username, password, device_name))
