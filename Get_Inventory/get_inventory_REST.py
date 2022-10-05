@@ -3,8 +3,8 @@
 """
 
     This script uses REST to extract following inventory details from EPN-M
-      - Interface Name
-      - Interface Description
+      - Module Name
+      - Module Description
       - Module Type
       - Serial Number
       - Product ID
