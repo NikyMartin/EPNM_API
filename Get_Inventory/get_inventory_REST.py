@@ -15,6 +15,9 @@
     March 8th, 2020
       - First release
 
+    October 05, 2022
+      - Added more controls
+
 """
 
 import os
@@ -102,7 +105,11 @@ if __name__ == '__main__':
 
     unformatted = response.text
     parsed = json.loads(unformatted)
-    module_list = parsed["queryResponse"]["entity"][0]["inventoryDetailsDTO"]["modules"]["module"]
+    try:
+        module_list = parsed["queryResponse"]["entity"][0]["inventoryDetailsDTO"]["modules"]["module"]
+    except:
+        print("ERROR: Could not locate module")
+        exit(1)
 
     module_list_output=[]
     for module in module_list:
