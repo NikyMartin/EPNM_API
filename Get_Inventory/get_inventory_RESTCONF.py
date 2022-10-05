@@ -2,8 +2,8 @@
 
 """
     This script uses RESTCONF to extract following inventory details from EPN-M
-      - Interface Name
-      - Interface Description
+      - Module Name
+      - Module Description
       - Module Type
       - Part Number
       - Serial Number
