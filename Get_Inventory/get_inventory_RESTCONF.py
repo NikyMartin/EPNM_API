@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-    This script uses REST to extract following inventory details from EPN-M
+    This script uses RESTCONF to extract following inventory details from EPN-M
       - Interface Name
       - Interface Description
       - Module Type
