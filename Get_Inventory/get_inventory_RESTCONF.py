@@ -22,6 +22,8 @@
       - Moved Common controls on a different file
       - Added more controls
 
+    October 11th, added control for empty fields
+
 """
 
 import requests
@@ -107,8 +109,17 @@ if __name__ == '__main__':
             serial_number = equipment['eq.serial-number']
         except:
             serial_number = ""
+        try:
+            fdtn_name = equipment['fdtn.name']
+        except:
+            fdtn_name = ""
 
-        entry = (equipment['fdtn.name'], equipment['fdtn.description'], equipment['eq.equipment-type'],
+        try:
+            fdtn_description = equipment['fdtn.description']
+        except:
+            fdtn_description = ""
+
+        entry = (fdtn_name, fdtn_description, equipment['eq.equipment-type'],
                  part_number, serial_number, product_id)
         list.append(entry)
 
