@@ -25,6 +25,8 @@
 
     Sept 23rd, introduced sorted for table output
 
+    Oct 11th, added control for empty names during discovery
+
 """
 
 import os
@@ -129,7 +131,21 @@ if __name__ == '__main__':
                   node_name = index1["nd.name"]
               else:
                   node_name = ''
-              node_list.append([index1["nd.name"], index1["nd.management-address"], index1["nd.product-type"],
+
+              try:
+                  node_name = index1["nd.name"]
+              except:
+                  node_name = ""
+              try:
+                  management_address = index1["nd.management-address"]
+              except:
+                  management_address = ""
+              try:
+                  product_type = index1["nd.product-type"]
+              except:
+                  product_type = ""
+
+              node_list.append([node_name, management_address,product_type,
                                 index1["nd.lifecycle-state"]])
 
           print("\nLast Index: "+str(last_index))
