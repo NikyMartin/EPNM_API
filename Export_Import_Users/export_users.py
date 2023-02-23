@@ -7,6 +7,12 @@
     Feb 8th, 2020
     Original version
 
+    Feb 23rd, 2023
+    Rev1: Moved form cx_Oracle to oracledb
+    To solve arm64 compatibility problems
+
+    TODO: add export Domains + exported filename including server IP
+
 """
 
 #############################################################
@@ -16,8 +22,7 @@
 #              from Oracle users table to a second json file
 #############################################################
 
-import cx_Oracle
-import os 
+import oracledb
 import json
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -46,6 +51,9 @@ if version[0] != '3':
 
 logger.info("Python version is "+platform.python_version())
 
+# lib_dir = os.path.join(os.environ.get("HOME"), "bin", "instantclient_19_8")
+# cx_Oracle.init_oracle_client(lib_dir=lib_dir)
+
 ### Check if IP address and port have been passed as input parameters
 if len(sys.argv)!=3:
     print('\nMust pass server IP address and Oracle wcsdba password as script arguments')
@@ -56,10 +64,14 @@ scripts, server_ip, dbapassword = sys.argv
 export_oracle_filename='export_oracle_users.json'
 export_epnm_filename='export_epnm_users.json'
 
-listener_port=1522
+listener_port='1522'
 sid='wcs'
 dbauser='wcsdba'
-sid = cx_Oracle.makedsn(server_ip, listener_port, service_name=sid)
+# old command to genereta the connection string. Still working
+# conn_string = cx_Oracle.makedsn(server_ip, listener_port, service_name=sid)
+
+# This one would work as well
+conn_string = "".join([server_ip,':',listener_port,'/',sid])
 
 def isOpen(server_ip,port):
    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -175,7 +187,11 @@ logger.info("Connecting to Oracle listener")
 
 try:
 #    connection = cx_Oracle.connect(dbauser, dbapassword, sid)
-     connection = cx_Oracle.connect(dbauser, dbapassword, sid, encoding="UTF-8")
+# This is the onld one working with cx_Oracle before moving to oracledb
+#    connection = cx_Oracle.connect(dbauser, dbapassword, sid, encoding="UTF-8")
+#     connection = cx_Oracle.connect(user=dbauser, password=dbapassword, dsn=sid, encoding="UTF-8")
+     print(conn_string)
+     connection = oracledb.connect(user=dbauser, password=dbapassword, dsn=conn_string, encoding="UTF-8")
 except Exception as e:
   print ('Failed to connect Database')
   print (str(e))
