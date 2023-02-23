@@ -7,6 +7,12 @@
     Feb 8th, 2020
     Original version
 
+    Feb 23rd, 2023
+    Rev1: Moved form cx_Oracle to oracledb
+    To solve arm64 compatibility problems
+
+    TODO: add import Domains + json file names as input parameters
+
 """
 
 #############################################################
@@ -16,8 +22,7 @@
 #         and other user data stored a second json file
 #############################################################
 
-import cx_Oracle
-import os 
+import oracledb
 import json
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -56,10 +61,14 @@ scripts, server_ip, dbapassword = sys.argv
 import_oracle_filename='export_oracle_users.json'
 import_epnm_filename='export_epnm_users.json'
 
-listener_port=1522
+listener_port='1522'
 sid='wcs'
 dbauser='wcsdba'
-sid = cx_Oracle.makedsn(server_ip, listener_port, service_name=sid)
+# old command to genereta the connection string. Still working
+# conn_string = cx_Oracle.makedsn(server_ip, listener_port, service_name=sid)
+
+# This one shopuld be better
+conn_string = "".join([server_ip,':',listener_port,'/',sid])
 
 def isOpen(server_ip,port):
    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -123,10 +132,12 @@ def add_user(epnm_user):
     })    
 
     if epnm_user['name'] != 'root':
-        response = requests.post('https://'+server_ip+'/webacs/api/v4/op/userManagement/users',  headers=headers, data=payload, verify=False, auth=(epnm_username, epnm_password))
+        response = requests.post('https://'+server_ip+'/webacs/api/v4/op/userManagement/users',  headers=headers,
+                                 data=payload, verify=False, auth=(epnm_username, epnm_password))
         if response.status_code != 200:
            print("Error while adding user ",epnm_user['name'])
            print("HTTP ERROR "+str(response.status_code))
+           print("Content: ", response._content)
 
 ##################
 ### Basic controls
@@ -239,8 +250,9 @@ logger.info("Oracle JSON file imported")
 logger.info("Connecting to Oracle listener")
 
 try:
-    connection = cx_Oracle.connect(dbauser, dbapassword, sid)
+# old one
 #     connection = cx_Oracle.connect(dbauser, dbapassword, sid, encoding="UTF-8")
+    connection = oracledb.connect(user=dbauser, password=dbapassword, dsn=conn_string, encoding="UTF-8")
 except Exception as e:
     print ('Failed to connect Database')
     print (str(e))
@@ -272,7 +284,7 @@ cursor.close ()
 connection.commit ()
 connection.close ()
 
-print("Oracle users tale updated")
+print("Oracle users table updated")
 logger.info("Oracle users table updated")
 
 exit (0)
